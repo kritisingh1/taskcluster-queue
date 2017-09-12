@@ -1359,6 +1359,9 @@ api.declare({
     return;
   }
 
+  // Count claimWork calls - useful for primitive monitoring
+  this.monitor.count(`claim-work.${provisionerId}.${workerType}`, count);
+
   // Allow request to abort their claim request, if the connection closes
   let aborted = new Promise(accept => {
     sleep20Seconds().then(accept);
