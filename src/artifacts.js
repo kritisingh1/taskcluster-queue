@@ -513,9 +513,8 @@ var replyWithArtifact = async function(taskId, runId, name, req, res) {
     res.set('x-taskcluster-content-length', artifact.details.contentLength);
     res.set('x-taskcluster-transfer-sha256', artifact.details.transferSha256);
     res.set('x-taskcluster-transfer-length', artifact.details.transferLength);
-    res.set('x-taskcluster-transfer-length', artifact.details.transferLength);
-    res.set('content-encoding', artifact.details.contentEncoding || 'identity');
-    res.set('content-type', artifact.details.contentType);
+    res.set('x-taskcluster-content-encoding', artifact.details.contentEncoding || 'identity');
+    res.set('x-taskcluster-content-type', artifact.details.contentType);
 
     // TODO: We should consider doing a HEAD on all resources and verifying that
     // the ETag they have matches the one that we received when creating the artifact.
